@@ -75,7 +75,7 @@ class DatabaseWriter(object):
         return self._create_table('tag_status', (
             Column('test_run_id', Integer, ForeignKey('test_runs.id'), nullable=False),
             Column('name', String(256), nullable=False),
-            Column('critical', Integer, nullable=False),
+            #Column('critical', Integer, nullable=False),
             Column('elapsed', Integer),
             Column('failed', Integer, nullable=False),
             Column('passed', Integer, nullable=False)
