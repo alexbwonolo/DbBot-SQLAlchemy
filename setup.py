@@ -33,5 +33,5 @@ setup(
     platforms        = 'any',
     classifiers      = CLASSIFIERS,
     packages         = ['dbbot', 'dbbot.reader'],
-    install_requires = ['robotframework', 'sqlalchemy']
+    install_requires = ['robotframework', 'sqlalchemy', 'pytz']
 )
