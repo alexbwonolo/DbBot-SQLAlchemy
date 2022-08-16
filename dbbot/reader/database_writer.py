@@ -45,6 +45,7 @@ class DatabaseWriter(object):
             Column('passed', Integer, nullable=False),
             Column('failed', Integer, nullable=False),
             Column('skipped', Integer, nullable=False),
+            Column('test_build_id', Integer, nullable=False)
         ), ('hash',))
 
     def _create_table_suites(self):

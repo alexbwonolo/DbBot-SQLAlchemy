@@ -22,6 +22,13 @@ from dbbot import Logger
 import pytz
 
 
+def get_metadata(result, key) -> int:
+    try:
+        return int(result.suite.metadata[key])
+    except (AttributeError, KeyError):
+        return 0
+
+
 class RobotResultsParser(object):
 
     def __init__(self, include_keywords, db, verbose_stream):
@@ -42,7 +49,8 @@ class RobotResultsParser(object):
                 'finished_at': self._format_robot_timestamp(test_run.suite.endtime),
                 'passed': test_run.statistics.total.passed,
                 'failed': test_run.statistics.total.failed,
-                'skipped': test_run.statistics.total.skipped
+                'skipped': test_run.statistics.total.skipped,
+                'test_build_id': get_metadata(test_run, 'buildid')
             })
         except IntegrityError:
             test_run_id = self._db.fetch_id('test_runs', {
